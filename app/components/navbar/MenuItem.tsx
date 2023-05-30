@@ -3,7 +3,6 @@
 interface MenuItemProps {
   onClick: () => void;
   label: string;
-  // onClose: () => void;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({ onClick, label }) => {

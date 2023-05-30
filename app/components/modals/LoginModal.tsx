@@ -98,16 +98,15 @@ const LoginModal = () => {
         onClick={() => signIn("github")}
       />
       <div className="mt-4 font-light text-center text-neutral-500">
-        <p>
+        <div className="flex flex-row items-center justify-center gap-3">
           First time using Airbnb?
-          <span
+          <div
             onClick={onToggle}
             className="cursor-pointer text-neutral-800 hover:underline"
           >
-            {" "}
             Create an account
-          </span>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );

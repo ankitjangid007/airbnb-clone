@@ -2,16 +2,12 @@ import { NextResponse } from "next/server";
 
 import { getCurrentUser } from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
-import { request } from "http";
 
 interface IParams {
   listingId?: string;
 }
 
-export default async function POST(
-  request: Request,
-  { params }: { params: IParams }
-) {
+export async function POST(request: Request, { params }: { params: IParams }) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -32,7 +28,9 @@ export default async function POST(
     where: {
       id: currentUser.id,
     },
-    data: { favoriteIds },
+    data: {
+      favoriteIds,
+    },
   });
 
   return NextResponse.json(user);
@@ -62,7 +60,9 @@ export async function DELETE(
     where: {
       id: currentUser.id,
     },
-    data: { favoriteIds },
+    data: {
+      favoriteIds,
+    },
   });
 
   return NextResponse.json(user);

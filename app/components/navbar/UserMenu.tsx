@@ -11,6 +11,7 @@ import useRentModal from "@/app/hooks/useRentModal";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
+import OutsideClickHandler from "../OutsideClickHandler";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -65,32 +66,37 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       </div>
 
       {isOpen && (
-        <div className="absolute rounded-r-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
-          <div className="flex flex-col cursor-pointer">
-            {currentUser ? (
-              <>
-                <MenuItem
-                  onClick={() => router.push("trips")}
-                  label="My trips"
-                />
-                <MenuItem onClick={() => {}} label="My favorites" />
-                <MenuItem onClick={() => {}} label="My reservations" />
-                <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={onRent} label="Airbnb my home" />
-                <hr />
-                <MenuItem onClick={() => signOut()} label="Logout" />
-              </>
-            ) : (
-              <>
-                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
-                <MenuItem onClick={loginModal.onOpen} label="Login" />
-                <hr />
-                <MenuItem onClick={onRent} label="Airbnb your home" />
-                <MenuItem onClick={() => {}} label="Help" />
-              </>
-            )}
+        <OutsideClickHandler onHide={toggleOpen}>
+          <div className="absolute rounded-r-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
+            <div className="flex flex-col cursor-pointer">
+              {currentUser ? (
+                <>
+                  <MenuItem
+                    onClick={() => {
+                      router.push("trips");
+                      setIsOpen(false);
+                    }}
+                    label="My trips"
+                  />
+                  <MenuItem onClick={() => {}} label="My favorites" />
+                  <MenuItem onClick={() => {}} label="My reservations" />
+                  <MenuItem onClick={() => {}} label="My properties" />
+                  <MenuItem onClick={onRent} label="Airbnb my home" />
+                  <hr />
+                  <MenuItem onClick={() => signOut()} label="Logout" />
+                </>
+              ) : (
+                <>
+                  <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+                  <MenuItem onClick={loginModal.onOpen} label="Login" />
+                  <hr />
+                  <MenuItem onClick={onRent} label="Airbnb your home" />
+                  <MenuItem onClick={() => {}} label="Help" />
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        </OutsideClickHandler>
       )}
     </div>
   );

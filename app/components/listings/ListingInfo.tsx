@@ -44,16 +44,18 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
 
   return (
     <div className="flex flex-col col-span-4 gap-8">
-      <div className="flex flex-col gap-2">
-        <div className="flex flex-row items-center gap-2 text-xl font-semibold ">
-          <div>Hosted by {user?.user?.name}</div>
-          <Avatar src={user?.user?.image} />
+      <div className="flex flex-row items-center justify-between">
+        <div className="flex flex-col gap-1">
+          <div className="text-xl font-semibold">
+            Hosted by {user?.user?.name}
+          </div>
+          <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
+            <div>{guestCount} guests</div>
+            <div>{roomCount} rooms</div>
+            <div>{bathroomCount} bathrooms</div>
+          </div>
         </div>
-        <div className="flex flex-row items-center gap-4 font-light text-neutral-500">
-          <div>{guestCount} guests</div>
-          <div>{roomCount} rooms</div>
-          <div>{bathroomCount} bathrooms</div>
-        </div>
+        <Avatar src={user?.user?.image} width={50} />
       </div>
       <hr />
       {category && (

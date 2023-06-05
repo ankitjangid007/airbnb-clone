@@ -29,8 +29,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const onRent = useCallback(() => {
     if (!currentUser) {
       loginModal.onOpen();
+    } else {
+      rentModal.onOpen();
     }
-    rentModal.onOpen();
+    setIsOpen((value) => false);
   }, [currentUser, loginModal, rentModal]);
 
   return (

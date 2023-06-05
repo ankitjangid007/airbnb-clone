@@ -257,10 +257,16 @@ const RentModal = () => {
       });
   };
 
+  const handleClose = () => {
+    reset();
+    setStep(STEPS.CATEGORY);
+    rentModal.onClose();
+  };
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
-      onClose={rentModal.onClose}
+      onClose={handleClose}
       onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}

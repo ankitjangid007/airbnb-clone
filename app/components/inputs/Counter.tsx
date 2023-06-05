@@ -35,14 +35,22 @@ const Counter: React.FC<CounterProps> = ({
       <div className="flex flex-row items-center gap-4">
         <div
           onClick={onReduce}
-          className="w-10 h-10 rounded-full border-[1px] border-neutral-400 flex items-center justify-center text-neutral-600 cursor-pointer hover:opacity-80 transition"
+          className={`w-10 h-10 rounded-full border-[1px] flex items-center justify-center transition
+          ${
+            value !== 1
+              ? "border-neutral-400  text-neutral-600"
+              : "border-neutral-200  text-neutral-300"
+          }
+          ${value !== 1 && "hover:text-black hover:border-black"}
+          ${value !== 1 ? "cursor-pointer" : "cursor-not-allowed"}
+          `}
         >
           <AiOutlineMinus />
         </div>
         <div className="text-xl font-light text-neutral-600">{value}</div>
         <div
           onClick={onAdd}
-          className="w-10 h-10 rounded-full border-[1px] border-neutral-400 flex items-center justify-center text-neutral-600 cursor-pointer hover:opacity-80 transition"
+          className="w-10 h-10 rounded-full border-[1px] border-neutral-400 flex hover:border-black items-center justify-center text-neutral-600 cursor-pointer hover:text-black transition"
         >
           <AiOutlinePlus />
         </div>

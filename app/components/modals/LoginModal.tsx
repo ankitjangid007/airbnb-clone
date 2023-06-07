@@ -33,6 +33,13 @@ const LoginModal = () => {
     },
   });
 
+  const handleProviderLogin = async (provider: string) => {
+    await signIn(provider, {
+      redirect: true,
+      callbackUrl: "/",
+    });
+  };
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
@@ -89,7 +96,7 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn("google")}
+        onClick={() => handleProviderLogin("google")}
       />
       <Button
         outline

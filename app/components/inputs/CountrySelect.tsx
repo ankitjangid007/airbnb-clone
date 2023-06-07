@@ -1,10 +1,10 @@
 "use client";
 
-import useCountries from "@/app/hooks/useCountries";
-import React from "react";
 import Select from "react-select";
 
-export type countrySelectValue = {
+import useCountries from "@/app/hooks/useCountries";
+
+export type CountrySelectValue = {
   flag: string;
   label: string;
   latlng: number[];
@@ -13,8 +13,8 @@ export type countrySelectValue = {
 };
 
 interface CountrySelectProps {
-  value?: countrySelectValue;
-  onChange: (value: countrySelectValue) => void;
+  value?: CountrySelectValue;
+  onChange: (value: CountrySelectValue) => void;
 }
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
@@ -23,13 +23,13 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
   return (
     <div>
       <Select
-        placeholder="anywhere"
+        placeholder="Anywhere"
         isClearable
         options={getAll()}
         value={value}
-        onChange={(value) => onChange(value as countrySelectValue)}
+        onChange={(value) => onChange(value as CountrySelectValue)}
         formatOptionLabel={(option: any) => (
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-3 ">
             <div>{option.flag}</div>
             <div>
               {option.label},
@@ -48,7 +48,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
           colors: {
             ...theme.colors,
             primary: "black",
-            primary25: "#ff3436",
+            primary25: "#ffe4e6",
           },
         })}
       />

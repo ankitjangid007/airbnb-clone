@@ -1,5 +1,5 @@
 import React from "react";
-import { getCurrentUser } from "../actions/getCurrentUser";
+import getCurrentUser from "../actions/getCurrentUser";
 import getReservations from "../actions/getReservations";
 import ClientOnly from "../ClientOnly";
 import EmptyState from "../components/EmptyState";

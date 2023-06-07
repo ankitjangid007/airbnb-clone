@@ -9,7 +9,7 @@ import ToasterProvider from "@/app/providers/ToasterProvider";
 
 import "./globals.css";
 import ClientOnly from "./ClientOnly";
-import { getCurrentUser } from "./actions/getCurrentUser";
+import getCurrentUser from "./actions/getCurrentUser";
 import SearchModal from "./components/modals/SearchModal";
 
 export const metadata = {

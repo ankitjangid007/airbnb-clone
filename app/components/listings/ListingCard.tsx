@@ -59,7 +59,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
     const currentDate = new Date();
 
-    if (currentDate > end) {
+    if (currentDate > start) {
       setDateRangeExpired(true);
     }
 
